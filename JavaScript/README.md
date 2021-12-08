@@ -29,6 +29,21 @@
 ## 논리연산(!, &&, ||)
 ## 비교연산(==, !=, >, >=, <, <=, ===, !==)
 ## 조건문(if, else if, else, switch)
+### switch
+```js
+let fruit = prompt('무슨 과일 살래?');
+// 입력하면
+switch (fruit) {
+    case '사과':
+        console.log('100원입니다');
+        break;
+    case '바나나':
+        console.log('300원입니다');
+        break;
+    }
+
+// 입력 값
+```
 ## 반복문(for, for in, for of, while, do while, forEach, break, continue)
 ### for문
 ``` javascript
@@ -560,3 +575,7 @@ weight: 40
 이력: [object Object]
 ```
 
+## window창 
+ * `alert()` : 경고, 알려줌.
+ * `prompt()` : 입력 받는 창.
+ * `confirm()` : 확인과 취소 선택 창. // 확인이면 `true`, 취소면 `false`
