@@ -241,6 +241,7 @@ garen //  기계 {q: 'strike', w: 'fire'}
 ### class
  * ES6 이후로 새롭게 등장한 문법
  * class의 이름은 **대문자**로 시작하는 것이 국룰
+ * JavaScript는 단일상속만 가능. 한 자식이 둘 이상의 부모의 매서드를 상속 받지 못함.
 ```js
 class Hero {
     constructor(구멍1, 구멍2){
@@ -285,6 +286,7 @@ nunu  // 기계 {q: 'consume', w: undefined}
 
 ## 에러 핸들링
 ### try, catch, finally
+ * `try`했는데 문제가 생기면 `catch`에서 에러가 나고, 어떤 상황이든 `finally`는 한다.
 ```js
 try {
   alert( 'try 블록 시작' );
@@ -319,3 +321,30 @@ console.log('hello world2');
 // hello world2
 // 끝남!
 ```
+
+```js
+new Promise(function(resolve, reject) {
+
+    setTimeout(() => reject('error'), 1000); // (*)
+  
+  }).then(function(result) { // (**)
+  
+    alert(result + ' : 잘 수행!'); // 1
+    return result + 'one';
+    //////////// then은 성공적으로 이행했을 때의 명령
+  }).catch(function(result) { // (***)
+  
+    alert(result + ' : 애러 발생!'); 
+    return result + 'two';
+    //////////// catch는 에러가 발생할 때의 명령
+  }).then(function(result) {
+  
+    alert(result + ' : 잘 수행!'); // 4
+    return result + 'three';
+  
+  });
+```
+
+ * promise는 백그라운드 => 태스크큐 => 호출 스택 순으로 실행
+ * 이때 호출 스택이 비어있어야 가져올 수 있음
+ * 비동기 함수는 콜스택에 넣지 않고 Web API에 먼저 보낸 다음에, Web API가 태스크 큐에 보내고 이를 콜스택으로 보냄
