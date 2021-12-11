@@ -319,3 +319,44 @@ console.log('hello world2');
 // hello world2
 // 끝남!
 ```
+
+
+## 캡처링, 버블링
+ * 브라우저에서 이벤트가 발생할 때
+   * 이벤트 대상을 찾아서, 최상위인 window 객체부터 document, body 순으로 DOM 트리를 따라 내려갑니다. 이를 **캡처링 단계**라고 합니다. 이때 중간에 만나는 모든 캡처링 이벤트 리스너를 실행시킵니다.
+
+   * 이벤트 대상을 찾아 캡처링이 끝나면 다시 DOM 트리를 따라 올라가며 만나는 모든 버블링 이벤트 리스너를 실행합니다. 이를 **이벤트 버블링** 단계라고 합니다. 
+
+
+## DOM 종합 실습
+
+```js
+const button = document.querySelector('.btn-select');
+const list = document.querySelector('.list-member');
+
+['Python', 'Java', 'JavaScript', 'C#', 'C/C++'].forEach(lang => {
+  // AdjacentHTML보다 createElement가 경제적임
+  const li = document.createElement('li');
+  const btn = document.createElement('button');
+  btn.setAttribute('type', 'button');
+  // btn.appendChild(document.createTextNode(lang));
+  btn.textContent = lang;
+  // li.appendChild(btn);
+  // list.appendChild(li); 합치기 가능
+  list.appendChild(li).appendChild(btn);
+});
+
+
+button.addEventListener('click', e => e.currentTarget.classList.toggle('on'));
+
+list.addEventListener('click', (event) => {
+  if (event.target.nodeName === "BUTTON") {
+      btn.textContent = event.target.textContent;
+      btn.classList.remove('on');
+  }
+});
+```
+
+## TDD
+ * **Test Drive Development** : 테스트를 통한 기능의 구현
+  * https://jasmine.github.io/
