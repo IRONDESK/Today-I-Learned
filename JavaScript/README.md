@@ -60,10 +60,19 @@ for (let i of a) {
 for (let i in a) {
     console.log(i);
 } // 결과 : [1, 2, 3, 4]
+```
 
+#### forEach()
+```js
 a.forEach(e => console.log(e**2));
 // 결과 : [100, 400, 900, 1600]
 
+[10, 20, 30].forEach((v,i,arr) => {
+    console.log(`${v}: ${i}, ${arr}`)
+});
+// 10: 0, 10,20,30
+// 20: 1, 10,20,30
+// 30: 2, 10,20,30
 ```
 
  * (실습)**평균 계산하기**
