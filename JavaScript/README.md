@@ -29,6 +29,21 @@
 ## 논리연산(!, &&, ||)
 ## 비교연산(==, !=, >, >=, <, <=, ===, !==)
 ## 조건문(if, else if, else, switch)
+### switch
+```js
+let fruit = prompt('무슨 과일 살래?');
+// 입력하면
+switch (fruit) {
+    case '사과':
+        console.log('100원입니다');
+        break;
+    case '바나나':
+        console.log('300원입니다');
+        break;
+    }
+
+// 입력 값
+```
 ## 반복문(for, for in, for of, while, do while, forEach, break, continue)
 ### for문
 ``` javascript
@@ -45,10 +60,19 @@ for (let i of a) {
 for (let i in a) {
     console.log(i);
 } // 결과 : [1, 2, 3, 4]
+```
 
+#### forEach()
+```js
 a.forEach(e => console.log(e**2));
 // 결과 : [100, 400, 900, 1600]
 
+[10, 20, 30].forEach((v,i,arr) => {
+    console.log(`${v}: ${i}, ${arr}`)
+});
+// 10: 0, 10,20,30
+// 20: 1, 10,20,30
+// 30: 2, 10,20,30
 ```
 
  * (실습)**평균 계산하기**
@@ -242,6 +266,13 @@ data.map(x => [x.이름, x.중간고사점수])  // [['Jimin', 55], ['Jungkook',
 
 let s = 0;
 data.map(x => x.중간고사점수).forEach(y => s += y)
+```
+
+#### set()
+ * 중복되는 값들이 제거됨
+```js
+let people = new Set(["김진호", "이태승", "강현욱", "김진호", "오상욱", "김민규", "구준표", "이제훈", "김민규"])
+people // {'김진호', '이태승', '강현욱', '오상욱', '김민규', '구준표', '이제훈'}
 ```
 
 #### filter()
@@ -560,3 +591,7 @@ weight: 40
 이력: [object Object]
 ```
 
+## window창 
+ * `alert()` : 경고, 알려줌.
+ * `prompt()` : 입력 받는 창.
+ * `confirm()` : 확인과 취소 선택 창. // 확인이면 `true`, 취소면 `false`
