@@ -268,6 +268,13 @@ let s = 0;
 data.map(x => x.중간고사점수).forEach(y => s += y)
 ```
 
+#### set()
+ * 중복되는 값들이 제거됨
+```js
+let people = new Set(["김진호", "이태승", "강현욱", "김진호", "오상욱", "김민규", "구준표", "이제훈", "김민규"])
+people // {'김진호', '이태승', '강현욱', '오상욱', '김민규', '구준표', '이제훈'}
+```
+
 #### filter()
 ```js
 const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
