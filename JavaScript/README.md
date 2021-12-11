@@ -211,6 +211,7 @@ function add(x, y) {
 let addArrow = (x, y) => x + y;
 ```
 
+### map(), set(), filter()
 #### map()
 ```js
 let array = [1, 4, 9, 16];
