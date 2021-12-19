@@ -442,11 +442,158 @@ console.log(퀵정렬(입력값));
 hit - 1
 miss - 5
 ```
+
+```js
+//LRU
+["바나나", "체리", "한라봉", "자몽", "수박", "수박", "체리"]
+[바나나] // 5
+[바나나, 체리] // 5
+[바나나, 체리, 한라봉] // 5
+[체리, 한라봉, 자몽] // 5
+[한라봉, 자몽, 수박] // 5
+[한라봉, 자몽, 수박] // 1 - hit
+[자몽, 수박, 체리] // 5
+
+
+// FIFO 알고리즘(캐시:3)
+["바나나", "체리", "한라봉", "자몽", "수박", "수박", "체리"]
+[바나나] // 5
+[바나나, 체리] // 5
+[바나나, 체리, 한라봉] // 5
+[체리, 한라봉, 자몽] // 5
+[한라봉, 자몽, 수박] // 5 
+[한라봉, 자몽, 수박] // 1 - hit
+[자몽, 수박, 체리]  // 5
+
+// hit - 1
+// miss - 5
+```
+
 ## 5. 트리와 그래프
+ * DFS+BFS 문서 참고
+
 ## 6. 트리의 순회
 
 # 실전 코딩테스트 풀이
-## 1. 18년도
-## 2. 19년도
-## 3. 20년도
-## 4. 21년도
+## 2018년도
+ * https://programmers.co.kr/learn/courses/30/lessons/17681?language=javascript
+ * 주제 : 2진법, 진법 연산, replace, or 연산
+```js
+[9, 20, 28, 18, 11]
+[30, 1, 21, 17, 28]
+let x = 9;
+x.toString()
+x.toString(2)
+x.toString(8)
+x.toString(16)
+
+let x = 9;
+let y = 30;
+
+x.toString(2);
+y.toString(2);
+
+'01001'
+'11110'
+'-----'
+'11111'
+
+'01001'
+'11110'
+'-----'
+'11111'
+
+
+let z = '11111';
+z.replace(/1/g, '#').replace(/0/g, ' ')
+'#####'
+
+(9 | 30).toString(2).replace(/1/g, '#').replace(/0/g, ' ');
+(9 & 30).toString(2).replace(/1/g, '#').replace(/0/g, ' ');
+(5 | 3).toString(2).replace(/1/g, '#').replace(/0/g, ' ');
+(31 | 14).toString(2).replace(/1/g, '#').replace(/0/g, ' ');
+
+'00101'
+'00011'
+'-----'
+'  ###'
+
+// || - or
+// && - and
+// ! - not
+```
+
+```js
+100000 - 1 == 11111;
+
+(9 | 30)
+.toString(2)
+.replace(/1/g, '#')
+.replace(/0/g, ' ');
+
+```
+```js
+let n = 5;
+let arr1 = [9, 20, 28, 18, 11];
+let arr2 = [30, 1, 21, 17, 28];
+
+function solution(n, arr1, arr2) {
+    let result = []
+    for (let i = 0; i < n; i++) {
+        result.push((arr1[i] | arr2[i]).toString(2).replace(/1/g, '#').replace(/0/g, ' '));
+    }
+    return result;
+}
+
+console.log(solution(n, arr1, arr2));
+
+```
+
+### 유틸리티 모음
+
+```js
+const zip = (a, b) => a.map((value, index)=>[value, b[index]]);
+
+const fillZero = (n, arr) => { return '0'.repeat(n - arr.length) + arr }
+
+////
+
+let n = 5;
+let arr1 = [9, 20, 28, 18, 11];
+let arr2 = [30, 1, 21, 17, 28];
+
+function solution(n, arr1, arr2) {
+    let result = []
+    // const zip = (a, b) => a.map((value, index)=>[value, b[index]]);
+    const fillSpace = (n, arr) => { return ' '.repeat(n - arr.length) + arr }
+    for (let i = 0; i < n; i++) {
+        result.push(fillSpace(n, (arr1[i] | arr2[i]).toString(2).replace(/1/g, '#').replace(/0/g, ' ')));
+    }
+    return result;
+}
+
+console.log(solution(n, arr1, arr2));
+
+////
+
+let n = 5;
+let arr1 = [9, 20, 28, 18, 11];
+let arr2 = [30, 1, 21, 17, 28];
+
+function solution(n, arr1, arr2) {
+    let result = []
+    const zip = (a, b) => a.map((value, index)=>[value, b[index]]);
+    const fillSpace = (n, arr) => { return ' '.repeat(n - arr.length) + arr }
+    for (let [i, j] of zip(arr1, arr2)) {
+        result.push(fillSpace(n, (i | j).toString(2).replace(/1/g, '#').replace(/0/g, ' ')));
+    }
+    return result;
+}
+
+console.log(solution(n, arr1, arr2));
+
+```
+
+## 2019년도
+## 2020년도
+## 2021년도
